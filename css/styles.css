@@ -1,0 +1,328 @@
+:root {
+  --fondo: #121212;
+  --fondo-2: #1b1b1b;
+  --texto: #ece7df;
+  --texto-suave: #b9b2a8;
+  --acento: #c8874a;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  background: var(--fondo);
+  color: var(--texto);
+  line-height: 1.6;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+
+a { color: inherit; }
+
+/* ---------- Cabecera y menú ---------- */
+.cabecera {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1.25rem;
+  background: rgba(18, 18, 18, 0.75);
+  backdrop-filter: blur(10px);
+}
+
+.cabecera_logo img {
+  height: 52px;
+  width: auto;
+  filter: invert(1);
+  mix-blend-mode: screen;
+}
+
+.cabecera_boton {
+  background: none;
+  border: 1px solid var(--texto-suave);
+  color: var(--texto);
+  font-size: 1.4rem;
+  padding: 0.25rem 0.7rem;
+  border-radius: 0.4rem;
+  cursor: pointer;
+}
+
+.menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.25rem;
+  background: rgba(18, 18, 18, 0.95);
+}
+
+.menu a.menu_instagram {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--acento);
+  border-radius: 2rem;
+  color: var(--acento);
+}
+
+.menu a.menu_instagram:hover {
+  background: var(--acento);
+  color: #121212;
+}
+
+.menu.abierto { display: flex; }
+
+.menu a {
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.95rem;
+}
+
+.menu a:hover { color: var(--acento); }
+
+@media (min-width: 768px) {
+  .cabecera_boton { display: none; }
+  .menu {
+    display: flex;
+    position: static;
+    flex-direction: row;
+    gap: 2rem;
+    padding: 0;
+    background: none;
+  }
+}
+
+/* ---------- Portada ---------- */
+.paginaprincipal {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  background: var(--fondo-2);
+}
+
+.paginaprincipal_foto {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.paginaprincipal::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(to top,
+    rgba(18, 18, 18, 0.95) 0%,
+    rgba(18, 18, 18, 0.45) 55%,
+    rgba(18, 18, 18, 0.25) 100%);
+}
+
+.paginaprincipal_contenido {
+  position: relative;
+  z-index: 2;
+  padding: 2rem 1.5rem 3.5rem;
+  max-width: 46rem;
+}
+
+.paginaprincipal_etiqueta {
+  margin: 0 0 1rem;
+  color: var(--acento);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 0.8rem;
+}
+
+.paginaprincipal h1 {
+  margin: 0 0 1rem;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-weight: 600;
+  font-size: clamp(2.4rem, 9vw, 4.5rem);
+  line-height: 1.05;
+}
+
+.paginaprincipal_lema {
+  margin: 0 0 2rem;
+  max-width: 34rem;
+  color: var(--texto-suave);
+  font-size: 1.1rem;
+}
+
+.paginaprincipal_botones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+/* ---------- Botones ---------- */
+.boton {
+  display: inline-block;
+  padding: 0.9rem 1.6rem;
+  background: var(--acento);
+  color: #121212;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 0.4rem;
+  border: 1px solid var(--acento);
+}
+
+.boton:hover { filter: brightness(1.15); }
+
+.boton_secundario {
+  background: transparent;
+  color: var(--texto);
+  border-color: var(--texto-suave);
+}
+
+/* ---------- Secciones ---------- */
+section[id] { scroll-margin-top: 5rem; }
+
+.seccion {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 5rem 1.25rem;
+}
+
+.seccion_cabecera {
+  max-width: 40rem;
+  margin-bottom: 2.5rem;
+}
+
+.seccion_etiqueta {
+  margin: 0 0 0.75rem;
+  color: var(--acento);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 0.8rem;
+}
+
+.seccion h2 {
+  margin: 0 0 1rem;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-weight: 600;
+  font-size: clamp(2rem, 6vw, 3rem);
+  line-height: 1.1;
+}
+
+.seccion_texto {
+  margin: 0;
+  color: var(--texto-suave);
+}
+
+/* ---------- Galería de trabajos ---------- */
+.galeria {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-auto-rows: 16rem;
+  gap: 1rem;
+}
+
+.trabajo {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  border-radius: 0.5rem;
+  background: var(--fondo-2);
+}
+
+.trabajo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.trabajo:hover img { transform: scale(1.06); }
+
+.trabajo figcaption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 2.5rem 1rem 1rem;
+  background: linear-gradient(to top, rgba(18, 18, 18, 0.85), transparent);
+  font-size: 0.95rem;
+}
+
+@media (min-width: 640px) {
+  .galeria { grid-template-columns: repeat(2, 1fr); }
+  .trabajo_ancha { grid-column: span 2; }
+}
+
+@media (min-width: 960px) {
+  .galeria {
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 18rem;
+    grid-auto-flow: dense;
+  }
+  .trabajo_alta { grid-row: span 2; }
+}
+
+/* ---------- Aparición al hacer scroll ---------- */
+.aparecer {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.aparecer.visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .aparecer { opacity: 1; transform: none; transition: none; }
+  .trabajo img { transition: none; }
+}
+/* ---------- Botón flotante de WhatsApp ---------- */
+.whatsapp_flotante {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  background: #25d366;
+  color: #fff;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(16px);
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+}
+
+.whatsapp_flotante.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
+
+.whatsapp_flotante.visible:hover {
+  transform: scale(1.08);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .whatsapp_flotante { transition: none; }
+}
