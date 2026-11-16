@@ -116,12 +116,14 @@ a { color: inherit; }
 
 .paginaprincipal_foto {
   position: absolute;
-  inset: 0;
+  top: -15%;
+  left: 0;
   width: 100%;
-  height: 100%;
+  height: 130%;
   max-width: none;
   object-fit: cover;
   z-index: 0;
+  will-change: transform;
 }
 
 .paginaprincipal::after {
@@ -170,6 +172,10 @@ a { color: inherit; }
   flex-wrap: wrap;
   gap: 0.75rem;
 }
+/* ---------- Menú: sección activa ---------- */
+.menu a { transition: color 0.3s ease; }
+
+.menu a.activo { color: var(--acento); }
 
 /* ---------- Botones ---------- */
 .boton {
@@ -275,6 +281,90 @@ section[id] { scroll-margin-top: 5rem; }
   .trabajo_alta { grid-row: span 2; }
 }
 
+/* ---------- Servicios ---------- */
+.servicios {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.servicio {
+  padding: 1.75rem;
+  background: var(--fondo-2);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0.5rem;
+  transition: opacity 0.7s ease, transform 0.7s ease, border-color 0.3s ease;
+}
+
+.servicio:hover { border-color: var(--acento); }
+
+.servicio h3 {
+  margin: 0 0 0.5rem;
+  color: var(--acento);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.servicio p {
+  margin: 0;
+  color: var(--texto-suave);
+}
+
+@media (min-width: 640px) {
+  .servicios { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 960px) {
+  .servicios { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* ---------- Contacto ---------- */
+.contacto {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.contacto_tarjeta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 1.75rem;
+  background: var(--fondo-2);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0.5rem;
+  text-decoration: none;
+  transition: opacity 0.7s ease, transform 0.7s ease, border-color 0.3s ease;
+}
+
+.contacto_tarjeta:hover { border-color: var(--acento); }
+
+.contacto_tarjeta svg {
+  margin-bottom: 0.75rem;
+  color: var(--acento);
+}
+
+.contacto_titulo {
+  color: var(--texto-suave);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 0.75rem;
+}
+
+.contacto_dato {
+  font-size: 1.15rem;
+  overflow-wrap: anywhere;
+}
+
+.contacto_accion {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .contacto { grid-template-columns: repeat(3, 1fr); }
+}
 /* ---------- Aparición al hacer scroll ---------- */
 .aparecer {
   opacity: 0;
@@ -313,6 +403,67 @@ section[id] { scroll-margin-top: 5rem; }
   transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
 }
 
+/* ---------- Pie de página ---------- */
+.pie {
+  padding-bottom: 3.5rem;
+  background: var(--fondo-2);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.pie_legal {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 1.5rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--texto-suave);
+}
+
+.pie_legal p { margin: 0; }
+.pie_legal a { color: var(--texto-suave); }
+.pie_legal a:hover { color: var(--acento); }
+
+@media (min-width: 768px) {
+  .pie_legal {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+/* ---------- Página legal ---------- */
+.legal {
+  max-width: 46rem;
+  margin: 0 auto;
+  padding: 3rem 1.25rem 4rem;
+}
+
+.legal_volver {
+  display: inline-block;
+  margin-bottom: 2rem;
+  color: var(--acento);
+  text-decoration: none;
+}
+
+.legal h1 {
+  margin: 0 0 1rem;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(2rem, 6vw, 3rem);
+  line-height: 1.1;
+}
+
+.legal h2 {
+  margin: 2.5rem 0 0.75rem;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.6rem;
+}
+
+.legal p,
+.legal li { color: var(--texto-suave); }
+
+.legal a { color: var(--acento); }
+
 .whatsapp_flotante.visible {
   opacity: 1;
   visibility: visible;
@@ -325,4 +476,14 @@ section[id] { scroll-margin-top: 5rem; }
 
 @media (prefers-reduced-motion: reduce) {
   .whatsapp_flotante { transition: none; }
+}
+
+/* ---------- Fondo animado ---------- */
+.fondo_particulas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
 }
